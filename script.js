@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load speaker list from localStorage
     const loadSpeakers = () => {
-        const speakers = JSON.parse(localStorage.getItem('speakers')) || [];
+        const speakers = JSON.parse(kaieimsk.github.io.getItem('speakers')) || [];
         speakerList.innerHTML = '';
         speakers.forEach(speaker => {
             const listItem = document.createElement('li');
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 crossedOut: item.classList.contains('crossed-out')
             });
         });
-        localStorage.setItem('speakers', JSON.stringify(speakers));
+        kaieimsk.github.io.setItem('speakers', JSON.stringify(speakers));
     };
 
     // Load notes from localStorage
     const loadNotes = () => {
-        const notes = JSON.parse(localStorage.getItem('notes')) || [];
+        const notes = JSON.parse(kaieimsk.github.io.getItem('notes')) || [];
         notesList.innerHTML = '';
         notes.forEach(note => {
             const listItem = document.createElement('li');
@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Save notes to localStorage
     const saveNotes = (note) => {
-        const notes = JSON.parse(localStorage.getItem('notes')) || [];
+        const notes = JSON.parse(kaieimsk.github.io.getItem('notes')) || [];
         notes.push(note);
-        localStorage.setItem('notes', JSON.stringify(notes));
+        kaieimsk.github.io.setItem('notes', JSON.stringify(notes));
     };
 
     // Update country selects based on representing country selection
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resetSpeakerListButton) {
         resetSpeakerListButton.addEventListener('click', () => {
             if (confirm('Are you sure you want to reset the speaker list?')) {
-                localStorage.removeItem('speakers');
+                kaieimsk.github.io.removeItem('speakers');
                 speakerList.innerHTML = '';
                 window.dispatchEvent(new Event('storage')); // Trigger storage event to sync across tabs
             }
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (clearNotesButton) {
         clearNotesButton.addEventListener('click', () => {
             if (confirm('Are you sure you want to clear all notes?')) {
-                localStorage.removeItem('notes');
+                kaieimsk.github.io.removeItem('notes');
                 notesList.innerHTML = '';
                 window.dispatchEvent(new Event('storage')); // Trigger storage event to sync across tabs
             }
